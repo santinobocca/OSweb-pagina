@@ -258,17 +258,23 @@
     box-shadow:0 10px 30px rgba(91,157,249,0.35);
   }
 
-  .btn-ghost{
-    font-weight:600;
-    font-size:15px;
-    color:var(--text-primary);
-    padding:14px 8px;
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    border-bottom:1px solid var(--border);
-  }
-  .btn-ghost:hover{border-color:var(--accent-cyan); color:var(--accent-cyan);}
+.btn-ghost{
+  font-weight:600;
+  font-size:15px;
+  color:var(--text-primary);
+  padding:11px 20px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border:1.5px solid var(--border);
+  border-radius:100px;
+  transition:border-color .18s ease, color .18s ease, background .18s ease;
+}
+.btn-ghost:hover{
+  border-color:var(--accent-cyan);
+  color:var(--accent-cyan);
+  background:rgba(111,227,212,0.06);
+}
 
   /* profile card — echoes the source, reimagined as a clean widget */
   .id-card{
