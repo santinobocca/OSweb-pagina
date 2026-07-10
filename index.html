@@ -803,9 +803,15 @@
               <input id="femail" type="email" placeholder="tu@email.com" required>
             </div>
           </div>
-          <div class="field-group">
-            <label for="fbiz">Negocio o proyecto</label>
-            <input id="fbiz" type="text" placeholder="¿De qué se trata?">
+          <div class="field-row">
+            <div class="field-group">
+              <label for="fbiz">Negocio o proyecto</label>
+              <input id="fbiz" type="text" placeholder="¿De qué se trata?">
+            </div>
+            <div class="field-group">
+              <label for="fphone">Teléfono</label>
+              <input id="fphone" type="tel" placeholder="Tu número de contacto">
+            </div>
           </div>
           <div class="field-group">
             <label for="fmsg">Mensaje</label>
@@ -903,6 +909,7 @@
       from_name: document.getElementById('fname').value,
       from_email: document.getElementById('femail').value,
       business: document.getElementById('fbiz').value,
+      phone: document.getElementById('fphone').value,
       message: document.getElementById('fmsg').value
     }).then(() => {
       submitBtn.textContent = 'Mensaje enviado ✓';
