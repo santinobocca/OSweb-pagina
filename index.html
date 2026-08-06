@@ -230,6 +230,15 @@
     color:var(--accent);
     position:relative;
   }
+  
+  @keyframes shine-glow{
+  0%, 100%{
+    text-shadow:0 0 12px rgba(91,157,249,0.35), 0 0 24px rgba(91,157,249,0.15);
+  }
+  50%{
+    text-shadow:0 0 22px rgba(91,157,249,0.7), 0 0 44px rgba(91,157,249,0.35), 0 0 60px rgba(111,227,212,0.2);
+  }
+}
 
   .hero-sub{
     font-size:17px;
