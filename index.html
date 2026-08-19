@@ -426,6 +426,113 @@
     line-height:1.6;
   }
 
+  .offer-tabs{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:34px;
+  }
+  .offer-tab{
+    font-family:var(--mono);
+    font-size:13.5px;
+    color:var(--text-muted);
+    padding:10px 20px;
+    border:1.5px solid var(--border);
+    border-radius:100px;
+    transition:color .18s ease, border-color .18s ease, background .18s ease;
+  }
+  .offer-tab:hover{
+    color:var(--text-primary);
+    border-color:rgba(91,157,249,0.35);
+  }
+  .offer-tab[aria-selected="true"]{
+    color:var(--text-primary);
+    border-color:rgba(91,157,249,0.55);
+    background:var(--accent-soft);
+  }
+
+  .offer-panel[hidden]{display:none;}
+  .offer-panel{animation:panel-in .3s ease both;}
+
+  @keyframes panel-in{
+    from{opacity:0; transform:translateY(8px);}
+    to{opacity:1; transform:none;}
+  }
+
+  .chrome-step{
+    margin-left:auto;
+    font-family:var(--mono);
+    font-size:11.5px;
+    letter-spacing:0.04em;
+    color:var(--text-faint);
+  }
+
+  /* ============ TRABAJOS ============ */
+  .work-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+    gap:22px;
+  }
+
+  .work-card{
+    display:block;
+    background:var(--bg-panel);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    overflow:hidden;
+    transition:transform .22s ease, border-color .22s ease, background .22s ease;
+  }
+  .work-card:hover{
+    transform:translateY(-4px);
+    border-color:rgba(91,157,249,0.35);
+    background:var(--bg-panel-hover);
+  }
+
+  .work-card-body{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    padding:32px 30px;
+  }
+
+  .work-logo{
+    width:96px; height:96px;
+    flex-shrink:0;
+    border-radius:20px;
+    border:1px solid var(--border);
+    background:var(--bg-panel-2);
+    overflow:hidden;
+    display:grid;
+    place-items:center;
+  }
+  .work-logo img{width:100%; height:100%; object-fit:contain;}
+
+  .work-copy h3{
+    font-family:var(--display);
+    font-size:22px;
+    font-weight:600;
+    margin-bottom:10px;
+  }
+  .work-copy p{
+    color:var(--text-muted);
+    font-size:14.5px;
+    line-height:1.6;
+    max-width:560px;
+  }
+
+  .work-link{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    margin-top:16px;
+    font-size:14.5px;
+    font-weight:600;
+    color:var(--accent);
+  }
+  .work-card:hover .work-link{color:var(--accent-cyan);}
+  .work-link svg{transition:transform .22s ease;}
+  .work-card:hover .work-link svg{transform:translateX(3px);}
+
   /* ============ ABOUT ============ */
   .about{
     display:grid;
@@ -614,13 +721,15 @@
   /* ============ RESPONSIVE ============ */
   @media (max-width:920px){
     .offer-grid{grid-template-columns:1fr; }
+    .work-card-body{flex-direction:column; align-items:flex-start; gap:22px; padding:28px 24px;}
+    .work-logo{width:80px; height:80px; border-radius:18px;}
     .about{grid-template-columns:1fr; gap:36px;}
     .about-visual{max-width:360px; margin:0 auto;}
     .contact-shell{grid-template-columns:1fr; padding:36px 24px; gap:36px;}
     .footer-top{grid-template-columns:1fr 1fr; row-gap:36px;}
   }
 
-  @media (max-width:720px){
+  @media (max-width:860px){
     nav.primary-links{
       position:fixed;
       top:73px; left:0; right:0;
@@ -646,6 +755,9 @@
       border-radius:100px;
       font-weight:600;
     }
+  }
+
+  @media (max-width:720px){
     .hero{padding:64px 0 64px;}
     .field-row{grid-template-columns:1fr;}
     .footer-top{grid-template-columns:1fr;}
@@ -681,6 +793,7 @@
     <nav class="primary-links" id="primaryLinks">
       <a href="#inicio">Inicio</a>
       <a href="#ofrecemos">Qué ofrecemos</a>
+      <a href="#NuestrosTrabajos">Nuestros trabajos</a>
       <a href="#nosotros">Quiénes somos</a>  
     </nav>
 
@@ -717,42 +830,115 @@
       <div class="section-head">
         <p class="eyebrow">&lt;qué ofrecemos&gt;</p>
         <h2>Todo lo que tu marca necesita para vivir en la red</h2>
-        <p>Del primer boceto a la web publicada: nos encargamos de cada parte del camino.</p>
+        <p>Del primer boceto a la web publicada, y del prototipo a la app funcionando: nos encargamos de cada parte del camino.</p>
       </div>
 
-      <div class="offer-grid">
-        <article class="offer-card">
-          <div class="chrome-bar"><span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span></div>
-          <div class="offer-card-body">
-            <span class="offer-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6L12 16.8l-5.4 2.5 1.3-6-4.6-4.1 6.1-.6z"/></svg>
-            </span>
-            <h3>Diseño a medida</h3>
-            <p>Cada página se piensa desde cero para tu marca: paleta, tipografía y estructura propias.</p>
-          </div>
-        </article>
+      <div class="offer-tabs" role="tablist" aria-label="Tipos de proyecto">
+        <button class="offer-tab" role="tab" id="tab-web" aria-controls="panel-web" aria-selected="true">Desarrollo web</button>
+        <button class="offer-tab" role="tab" id="tab-apps" aria-controls="panel-apps" aria-selected="false" tabindex="-1">Aplicaciones</button>
+      </div>
 
-        <article class="offer-card">
-          <div class="chrome-bar"><span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span></div>
-          <div class="offer-card-body">
-            <span class="offer-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13 6l-2 12"/></svg>
-            </span>
-            <h3>Desarrollo web</h3>
-            <p>Construimos sitios rápidos y responsivos, listos para funcionar en cualquier dispositivo desde el primer día.</p>
-          </div>
-        </article>
+      <div class="offer-panel" id="panel-web" role="tabpanel" aria-labelledby="tab-web" tabindex="0">
+        <div class="offer-grid">
+          <article class="offer-card">
+            <div class="chrome-bar"><span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-step">paso 01</span></div>
+            <div class="offer-card-body">
+              <span class="offer-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6L12 16.8l-5.4 2.5 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+              </span>
+              <h3>Diseño a medida</h3>
+              <p>Cada página se piensa desde cero para tu marca: paleta, tipografía y estructura propias.</p>
+            </div>
+          </article>
 
-        <article class="offer-card">
-          <div class="chrome-bar"><span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span></div>
-          <div class="offer-card-body">
-            <span class="offer-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6.3 6.3l2.8 2.8M14.9 14.9l2.8 2.8M17.7 6.3l-2.8 2.8M9.1 14.9l-2.8 2.8"/></svg>
-            </span>
-            <h3>Mantenimiento y soporte</h3>
-            <p>Acompañamos tu web después del lanzamiento: actualizaciones, cambios de contenido y soporte cuando lo necesites.</p>
+          <article class="offer-card">
+            <div class="chrome-bar"><span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-step">paso 02</span></div>
+            <div class="offer-card-body">
+              <span class="offer-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13 6l-2 12"/></svg>
+              </span>
+              <h3>Desarrollo web</h3>
+              <p>Construimos sitios rápidos y responsivos, listos para funcionar en cualquier dispositivo desde el primer día.</p>
+            </div>
+          </article>
+
+          <article class="offer-card">
+            <div class="chrome-bar"><span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-step">paso 03</span></div>
+            <div class="offer-card-body">
+              <span class="offer-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6.3 6.3l2.8 2.8M14.9 14.9l2.8 2.8M17.7 6.3l-2.8 2.8M9.1 14.9l-2.8 2.8"/></svg>
+              </span>
+              <h3>Mantenimiento y soporte</h3>
+              <p>Acompañamos tu web después del lanzamiento: actualizaciones, cambios de contenido y soporte cuando lo necesites.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="offer-panel" id="panel-apps" role="tabpanel" aria-labelledby="tab-apps" tabindex="0" hidden>
+        <div class="offer-grid">
+          <article class="offer-card">
+            <div class="chrome-bar"><span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-step">paso 01</span></div>
+            <div class="offer-card-body">
+              <span class="offer-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg>
+              </span>
+              <h3>Relevamiento y prototipo</h3>
+              <p>Estudiamos cómo trabajás hoy y dibujamos juntos las pantallas y funciones antes de escribir una línea de código.</p>
+            </div>
+          </article>
+
+          <article class="offer-card">
+            <div class="chrome-bar"><span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-step">paso 02</span></div>
+            <div class="offer-card-body">
+              <span class="offer-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="13" height="10" rx="2"/><path d="M6 18h6"/><rect x="17" y="9" width="5" height="11" rx="1.5"/></svg>
+              </span>
+              <h3>Software y apps a medida</h3>
+              <p>Programamos la aplicación de escritorio o móvil que tu negocio necesita, con tus datos siempre bajo tu control.</p>
+            </div>
+          </article>
+
+          <article class="offer-card">
+            <div class="chrome-bar"><span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-step">paso 03</span></div>
+            <div class="offer-card-body">
+              <span class="offer-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 12a8.5 8.5 0 1 1-2.8-6.3"/><path d="M20.5 4v5h-5"/></svg>
+              </span>
+              <h3>Entrega y actualizaciones</h3>
+              <p>Instalación, capacitación y mejoras continuas: la app crece con tu negocio y no queda congelada en el tiempo.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <section id="NuestrosTrabajos">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">&lt;nuestros trabajos&gt;</p>
+        <h2>Proyectos que ya están funcionando</h2>
+        <p>Ideas que dejaron de ser un boceto y hoy están en manos de sus usuarios.</p>
+      </div>
+
+      <div class="work-grid">
+        <a class="work-card" href="/psicoapp">
+          <div class="chrome-bar"><span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-step">/psicoapp</span></div>
+          <div class="work-card-body">
+            <span class="work-logo"><img src="/psicoapp/assets/logo.png" alt="Logo de PsicoApp" loading="lazy"></span>
+            <div class="work-copy">
+              <h3>PsicoApp</h3>
+              <p>Software de escritorio para consultorios de psicología: agenda de turnos, historia clínica, turnos fijos, documentos en PDF y copias de seguridad. Todo en la computadora del profesional, sin depender de internet.</p>
+              <span class="work-link">
+                Ver el proyecto
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
           </div>
-        </article>
+        </a>
       </div>
     </div>
   </section>
@@ -874,6 +1060,7 @@
         <ul>
           <li><a href="#inicio">Inicio</a></li>
           <li><a href="#ofrecemos">Qué ofrecemos</a></li>
+          <li><a href="#NuestrosTrabajos">Nuestros trabajos</a></li>
           <li><a href="#nosotros">Quiénes somos</a></li>
           <li><a href="#contacto">Contactanos</a></li>
         </ul>
@@ -927,6 +1114,27 @@
 
   // Footer year
   document.getElementById('year').textContent = '© ' + new Date().getFullYear() + ' OSweb';
+
+  // Offer tabs — Desarrollo web / Aplicaciones
+  const offerTabs = Array.from(document.querySelectorAll('.offer-tab'));
+  function selectTab(tab){
+    offerTabs.forEach(t => {
+      const active = t === tab;
+      t.setAttribute('aria-selected', active);
+      t.tabIndex = active ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !active;
+    });
+  }
+  offerTabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => selectTab(tab));
+    tab.addEventListener('keydown', (e) => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      e.preventDefault();
+      const next = offerTabs[(i + (e.key === 'ArrowRight' ? 1 : offerTabs.length - 1)) % offerTabs.length];
+      selectTab(next);
+      next.focus();
+    });
+  });
 
   // Contact form — wired up to EmailJS
   emailjs.init('sKmFKQt0KGVzLuLxV');
