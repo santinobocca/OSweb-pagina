@@ -745,6 +745,7 @@
     <nav class="barra-links" id="links">
       <a href="#Turnos">Turnos</a>
       <a href="#Pacientes">Pacientes</a>
+      <a href="#Aranceles">Aranceles</a>
       <a href="#TurnosFijos">Turnos fijos</a>
       <a href="#Documentos">Documentos</a>
       <a href="#Configuracion">Configuración</a>
@@ -772,16 +773,12 @@
 
       <div class="chips">
         <span class="chip">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-          Funciona sin internet
-        </span>
-        <span class="chip">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
           Tus datos, en tu computadora
         </span>
         <span class="chip">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
-          Para Windows
+          Para Windows y Android
         </span>
       </div>
 
@@ -923,12 +920,71 @@
     </div>
   </section>
 
+  <!-- ============ ARANCELES ============ -->
+  <section class="seccion" id="Aranceles">
+    <div class="wrap">
+      <div class="seccion-grid">
+        <div class="seccion-texto reveal">
+          <p class="indice"><b>03</b> Aranceles</p>
+          <h2>El nuevo valor, <em>avisado a todos</em>.</h2>
+          <p class="lead">Cuando cambia el arancel de la sesión, lo cargás una vez en la app y desde ahí armás el aviso para mandarles a los pacientes registrados, sin escribir uno por uno.</p>
+          <ul class="funciones">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><div><strong>El arancel actual, siempre a la vista.</strong> Guardás el valor de la sesión y la fecha desde la que rige; queda visible en la app.</div></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><div><strong>Aviso listo para enviar.</strong> La app arma el mensaje con el nuevo arancel y la fecha de vigencia; le sumás el texto que quieras antes de mandarlo.</div></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><div><strong>A los pacientes registrados.</strong> Recorrés la lista de pacientes con teléfono cargado y a cada uno le abrís WhatsApp con el mensaje ya escrito.</div></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><div><strong>Vos controlás cada envío.</strong> No se manda nada solo: revisás paciente por paciente, salteás a quien quieras y ves a quién ya le avisaste.</div></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><div><strong>Queda registrado.</strong> Cada actualización de arancel se guarda con su fecha, para saber desde cuándo rige cada valor.</div></li>
+          </ul>
+          <p class="nota">El mensaje sale desde tu WhatsApp, como cualquier otro. PsicoApp solo lo deja listo.</p>
+        </div>
+
+        <div class="seccion-visual reveal">
+          <div class="mock" aria-hidden="true">
+            <div class="mock-barra">
+              <span class="mock-titulo">Aranceles</span>
+              <span class="mock-boton">Actualizar arancel</span>
+            </div>
+            <div class="fila" style="display:block;">
+              <div class="fila-sub">Arancel por sesión</div>
+              <div class="fila-principal" style="font-size:19px; margin:2px 0;">$ 18.000</div>
+              <div class="fila-sub">Rige desde el 01/09/2025 · antes $ 15.000</div>
+            </div>
+            <p class="rotulo-fecha espaciado">Mensaje para los pacientes</p>
+            <div class="ruta">Hola! Te cuento que a partir del 01/09 el valor de la sesión pasa a ser $18.000. Cualquier duda, me escribís. ¡Gracias!</div>
+            <p class="rotulo-fecha espaciado">Enviar a pacientes registrados</p>
+            <div class="fila">
+              <div>
+                <div class="fila-principal">Álvarez, Camila</div>
+                <div class="fila-sub">+54 9 351 ...</div>
+              </div>
+              <div class="fila-acciones"><span class="mini verde">WhatsApp</span></div>
+            </div>
+            <div class="fila">
+              <div>
+                <div class="fila-principal">Benítez, Martín</div>
+                <div class="fila-sub">Avisado · hoy 09:14</div>
+              </div>
+              <div class="fila-acciones"><span class="mini">Reenviar</span></div>
+            </div>
+            <div class="fila">
+              <div>
+                <div class="fila-principal">Rossi, Julieta</div>
+                <div class="fila-sub">+54 9 341 ...</div>
+              </div>
+              <div class="fila-acciones"><span class="mini verde">WhatsApp</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ TURNOS FIJOS ============ -->
   <section class="seccion" id="TurnosFijos">
     <div class="wrap">
       <div class="seccion-grid">
         <div class="seccion-texto reveal">
-          <p class="indice"><b>03</b> Turnos fijos</p>
+          <p class="indice"><b>04</b> Turnos fijos</p>
           <h2>Lo que se repite, <em>se carga una sola vez</em>.</h2>
           <p class="lead">La mayoría de los pacientes viene siempre el mismo día y a la misma hora. Se define la serie una vez y la app llena la agenda sola.</p>
           <ul class="funciones">
@@ -985,7 +1041,7 @@
     <div class="wrap">
       <div class="seccion-grid">
         <div class="seccion-texto reveal">
-          <p class="indice"><b>04</b> Documentos</p>
+          <p class="indice"><b>05</b> Documentos</p>
           <h2>Informes y certificados, <em>listos para firmar</em>.</h2>
           <p class="lead">Completás los campos y la app arma el PDF con el formato profesional ya resuelto: encabezado, cuerpo, lugar, fecha, firma y matrícula.</p>
           <ul class="funciones">
@@ -1032,7 +1088,7 @@
     <div class="wrap">
       <div class="seccion-grid">
         <div class="seccion-texto reveal">
-          <p class="indice"><b>05</b> Configuración</p>
+          <p class="indice"><b>06</b> Configuración</p>
           <h2>Que no se pierda <em>nunca nada</em>.</h2>
           <p class="lead">Toda la información vive en tu computadora, no en un servidor ajeno. Por eso las copias de seguridad son parte central de la app y no un detalle escondido.</p>
           <ul class="funciones">
