@@ -241,6 +241,34 @@
   }
 }
 
+  .rotador{
+    position:relative;
+    display:inline-block;
+  }
+  .rotador > span{
+    animation:rotador-web 4s ease-in-out infinite;
+  }
+  .rotador .is-app{
+    position:absolute;
+    left:0;
+    top:0;
+    animation-name:rotador-app;
+  }
+
+  @keyframes rotador-web{
+    0%, 44%  { opacity:1; }
+    50%, 94% { opacity:0; }
+    100%     { opacity:1; }
+  }
+  @keyframes rotador-app{
+    0%, 44%  { opacity:0; }
+    50%, 94% { opacity:1; }
+    100%     { opacity:0; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .rotador .is-app{opacity:0;}
+  }
+
   .hero-sub{
     font-size:17px;
     color:var(--text-muted);
@@ -809,8 +837,8 @@
   <section class="hero" id="inicio">
     <div class="wrap hero-inner">
       <div>
-        <h1>Tu idea merece<br>una web que <em>brille</em>.</h1>
-        <p class="hero-sub">¿Querés una web como esta? Diseñamos y desarrollamos páginas web a medida para que tu negocio llegue al mundo, hoy.</p>
+        <h1>Tu idea merece<br>una <span class="rotador"><span class="is-web">web</span><span class="is-app" aria-hidden="true">app</span></span> que <em>brille</em>.</h1>
+        <p class="hero-sub">¿Querés una web como esta? Diseñamos y desarrollamos páginas web, sistemas y apps a medida para que tu negocio llegue al mundo.</p>
         <div class="hero-actions">
           <a href="#contacto" class="btn-primary">
             Empezá tu proyecto
@@ -931,7 +959,7 @@
             <span class="work-logo"><img src="/psicoapp/assets/logo.png" alt="Logo de PsicoApp" loading="lazy"></span>
             <div class="work-copy">
               <h3>PsicoApp</h3>
-              <p>Software de escritorio para consultorios de psicología: agenda de turnos, historia clínica, turnos fijos, documentos en PDF y copias de seguridad. Todo en la computadora del profesional, sin depender de internet.</p>
+              <p>Software de escritorio para consultorios de psicología: agenda de turnos, historia clínica, turnos fijos, documentos en PDF y copias de seguridad. Todo en la computadora del profesional.</p>
               <span class="work-link">
                 Ver el proyecto
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -1052,7 +1080,7 @@
           </span>
           <span class="brand-name">OS<span>web</span></span>
         </a>
-        <p>Tu marca en la red. Creación de páginas web a medida para llevar tu negocio al mundo.</p>
+        <p>Tu marca en la red. Creación de páginas web, sistemas y apps a medida para llevar tu negocio al mundo.</p>
       </div>
 
       <div class="footer-col">
